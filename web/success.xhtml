@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    
+</h:head>  
+    <h:body style=" background-size: cover; background-image: url(image/background.jpg)">
+    <nav>
+        <div class="container-nav">
+            <div class="logo">
+                <a href=""><img src="image/LogoNew.png" class="icon"/></a> 
+            </div>
+            <div class="menu" style="padding-top: 45px; max-width: 100em; ">
+                <ul>
+                    <h2 style="margin-right: 300px; color: whitesmoke; font-weight: bold;">All User Information</h2>
+                    <p:commandButton action="Search?faces-redirect=true" icon="ui-icon-search" value="Search" style="margin-right: 20px;"/>
+                    <p:commandButton action="/LoginAdmin.xhtml" value="LogOut" /> 
+                </ul>
+            </div>
+        </div>
+    </nav>
+  
+    <p:spacer> </p:spacer>  
+    <h:form id="form1" style="margin-top: 150px;">  
+        <p:dataTable id="dataTable" var="user" paginator="true" rows="5" value="#{userBean.users}" style="text-align: center; font-family: 'Poppins', sans-serif;">  
+            <p:column headerText="No">  
+                <h:outputText value="#{user.recordNo}" />  
+            </p:column>  
+            <p:column headerText="Nama">  
+                <h:outputText value="#{user.nama}" />  
+            </p:column>
+            <p:column headerText="Email">  
+                <h:outputText value="#{user.email}" />  
+            </p:column>                          
+            <p:column headerText="Tanggal Kunjungan">  
+                <h:outputText value="#{user.tanggal}">  
+                    <f:convertDateTime type="date" pattern="dd-MMM-yyyy" />  
+                </h:outputText>  
+            </p:column>
+            <p:column headerText="Jumlah Ticket">  
+                <h:outputText value="#{user.jumlahtiket}" />  
+            </p:column>
+        </p:dataTable>  
+    </h:form>  
+</h:body>  
+  
+</html>  

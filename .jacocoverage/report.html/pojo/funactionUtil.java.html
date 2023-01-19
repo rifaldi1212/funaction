@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>funactionUtil.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;funaction&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">pojo</a> &gt; <span class="el_source">funactionUtil.java</span></div><h1>funactionUtil.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package pojo;
+
+import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.SessionFactory;
+
+/**
+ * Hibernate Utility class with a convenient method to get Session Factory
+ * object.
+ *
+ * @author Bayu &amp; Arsyi
+ */
+<span class="nc" id="L17">public class funactionUtil {</span>
+
+    private static final SessionFactory sessionFactory;
+    
+    static {
+        try {
+            // Create the SessionFactory from standard (hibernate.cfg.xml) 
+            // config file.
+<span class="fc" id="L25">            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();</span>
+<span class="nc" id="L26">        } catch (Throwable ex) {</span>
+            // Log the exception. 
+<span class="nc" id="L28">            System.err.println(&quot;Initial SessionFactory creation failed.&quot; + ex);</span>
+<span class="nc" id="L29">            throw new ExceptionInInitializerError(ex);</span>
+<span class="fc" id="L30">        }</span>
+<span class="fc" id="L31">    }</span>
+    
+    public static SessionFactory getSessionFactory() {
+<span class="fc" id="L34">        return sessionFactory;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DAOUser.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;funaction&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">DAOUser.java</span></div><h1>DAOUser.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import java.util.*;
+import org.hibernate.*;
+import pojo.*;
+
+/**
+ *
+ * @author Bayu &amp; Arsyi
+ */
+<span class="fc" id="L16">public class DAOUser {</span>
+    private User user;  
+    private User newuser;  
+    private List &lt; User &gt; DaoAllUsers;  
+    private List &lt; User &gt; DaoSearchUserList;  
+    //Session session; Method;  
+    public List &lt; User &gt; AllUsers()  
+    {  
+<span class="fc" id="L24">        Session session = funactionUtil.getSessionFactory().openSession();  </span>
+        try  
+        {  
+<span class="fc" id="L27">            session.beginTransaction();  </span>
+<span class="fc" id="L28">            DaoAllUsers = session.createCriteria(User.class).list();  </span>
+<span class="fc" id="L29">            int count = DaoAllUsers.size();  </span>
+            // FacesMessage message1 = new FacesMessage(FacesMessage.SEVERITY_INFO, &quot;List Size&quot;, Integer.toString(count));//Debugging Purpose  
+            //RequestContext.getCurrentInstance().showMessageInDialog(message1);  
+<span class="fc" id="L32">            session.getTransaction().commit();  </span>
+        }  
+<span class="nc" id="L34">        catch (Exception e)  </span>
+        {  
+<span class="nc" id="L36">            e.printStackTrace();  </span>
+<span class="nc" id="L37">            session.getTransaction().rollback();  </span>
+<span class="fc" id="L38">        }  </span>
+<span class="fc" id="L39">        session.close();  </span>
+<span class="fc" id="L40">        return DaoAllUsers;  </span>
+    }  
+    
+    public Integer getId()  
+    {  
+<span class="nc" id="L45">        Session session = funactionUtil.getSessionFactory().openSession();  </span>
+<span class="nc" id="L46">        String hql = &quot;select max(U.id) from User U&quot;;  </span>
+<span class="nc" id="L47">        Query query = session.createQuery(hql);  </span>
+<span class="nc" id="L48">        List &lt; Integer &gt; results = query.list();  </span>
+<span class="nc" id="L49">        Integer userId = 1;  </span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">        if (results.get(0) != null)  </span>
+        {  
+<span class="nc" id="L52">            userId = results.get(0) + 1;  </span>
+        }  
+<span class="nc" id="L54">        session.flush();  </span>
+<span class="nc" id="L55">        session.close();  </span>
+<span class="nc" id="L56">        return userId;  </span>
+    }  
+    
+    public List &lt; User &gt; SearchByRecordNo(String RecordNo)  
+    {  
+<span class="fc" id="L61">        Session session = funactionUtil.getSessionFactory().openSession();  </span>
+<span class="fc" id="L62">        List &lt; User &gt; daoSearchList = new ArrayList &lt; &gt; ();  </span>
+        try  
+        {  
+<span class="fc" id="L65">            session.beginTransaction();  </span>
+<span class="fc" id="L66">            Query qu = session.createQuery(&quot;From User U where U.recordNo =:recordNo&quot;); //User is the entity not the table  </span>
+<span class="fc" id="L67">            qu.setParameter(&quot;recordNo&quot;, RecordNo);  </span>
+<span class="fc" id="L68">            daoSearchList = qu.list();  </span>
+<span class="fc" id="L69">            int count = daoSearchList.size();  </span>
+<span class="fc" id="L70">            session.getTransaction().commit();  </span>
+        }  
+<span class="nc" id="L72">        catch (Exception e)  </span>
+        {  
+<span class="nc" id="L74">            e.printStackTrace();  </span>
+<span class="nc" id="L75">            session.getTransaction().rollback();  </span>
+        }  
+        finally  
+        {  
+<span class="pc" id="L79">            session.close();  </span>
+<span class="pc" id="L80">        }  </span>
+<span class="fc" id="L81">        return daoSearchList;  </span>
+    }  
+    
+    public void add(User newuser)  
+    {  
+<span class="fc" id="L86">        Session session = funactionUtil.getSessionFactory().openSession();  </span>
+        try  
+        {  
+<span class="fc" id="L89">            String Id = Integer.toString(newuser.getId());  </span>
+            // begin a transaction  
+<span class="fc" id="L91">            session.beginTransaction();  </span>
+<span class="fc" id="L92">            session.merge(newuser);  </span>
+<span class="fc" id="L93">            session.flush();  </span>
+<span class="fc" id="L94">            System.out.println(&quot;NewUser saved, id: &quot; +  </span>
+<span class="fc" id="L95">                newuser.getId());  </span>
+<span class="fc" id="L96">            session.getTransaction().commit();  </span>
+        }  
+<span class="nc" id="L98">        catch (Exception e)  </span>
+        {  
+<span class="nc" id="L100">            e.printStackTrace();  </span>
+<span class="nc" id="L101">            session.getTransaction().rollback();  </span>
+<span class="fc" id="L102">        }  </span>
+<span class="fc" id="L103">        session.close();  </span>
+<span class="fc" id="L104">    }  </span>
+    
+    
+    public void delete(User user)  
+    {  
+<span class="fc" id="L109">        Session session = funactionUtil.getSessionFactory().openSession();  </span>
+        try  
+        {  
+<span class="fc" id="L112">            String name = user.getNama();  </span>
+<span class="fc" id="L113">            session.beginTransaction();  </span>
+<span class="fc" id="L114">            session.delete(user);  </span>
+<span class="fc" id="L115">            session.getTransaction().commit();  </span>
+        }  
+<span class="nc" id="L117">        catch (Exception e)  </span>
+        {  
+<span class="nc" id="L119">            e.printStackTrace();  </span>
+<span class="nc" id="L120">            session.getTransaction().rollback();  </span>
+<span class="fc" id="L121">        }  </span>
+<span class="fc" id="L122">        session.close();  </span>
+<span class="fc" id="L123">    }  </span>
+    
+    public void update(User user)  
+    {  
+<span class="fc" id="L127">        Session session = funactionUtil.getSessionFactory().openSession();  </span>
+        try  
+        {  
+<span class="fc" id="L130">            session.beginTransaction();  </span>
+<span class="fc" id="L131">            session.update(user);  </span>
+<span class="fc" id="L132">            session.flush();  </span>
+<span class="fc" id="L133">            session.getTransaction().commit();  </span>
+        }  
+<span class="fc" id="L135">        catch (Exception e)  </span>
+        {  
+<span class="fc" id="L137">            e.printStackTrace();  </span>
+<span class="fc" id="L138">            session.getTransaction().rollback();  </span>
+<span class="fc" id="L139">        }  </span>
+<span class="fc" id="L140">        session.close();  </span>
+<span class="fc" id="L141">    }  </span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 14, 2022 1:53:41 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojo.User" table="user" catalog="admindata2" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="recordNo" type="string">
+            <column name="RecordNo" length="10" not-null="true" />
+        </property>
+        <property name="nama" type="string">
+            <column name="nama" length="50" not-null="true" />
+        </property>
+        <property name="tanggal" type="date">
+            <column name="tanggal" length="10" not-null="true" />
+        </property>
+        <property name="jumlahtiket" type="int">
+            <column name="jumlahtiket" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="55" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

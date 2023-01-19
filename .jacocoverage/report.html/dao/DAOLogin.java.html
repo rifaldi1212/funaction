@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DAOLogin.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;funaction&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">dao</a> &gt; <span class="el_source">DAOLogin.java</span></div><h1>DAOLogin.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import java.util.*;
+import org.hibernate.*;
+import pojo.*;
+
+/**
+ *
+ * @author Bayu &amp; Arsyi
+ */
+<span class="fc" id="L16">public class DAOLogin {</span>
+    public List&lt;TbAdmin&gt; Login(String uName, String uPass){
+<span class="fc" id="L18">        Transaction trans  = null;</span>
+<span class="fc" id="L19">        TbAdmin us = new TbAdmin();</span>
+<span class="fc" id="L20">        List&lt;TbAdmin&gt; user = new ArrayList();</span>
+        
+<span class="fc" id="L22">         Session session = funactionUtil.getSessionFactory().openSession();</span>
+         try{
+<span class="fc" id="L24">             trans = session.beginTransaction();</span>
+<span class="fc" id="L25">             Query query = session.createQuery(&quot;from TbAdmin where username=:uName AND password=:uPass &quot;);</span>
+<span class="fc" id="L26">             query.setString(&quot;uName&quot;, uName);</span>
+<span class="fc" id="L27">             query.setString(&quot;uPass&quot;, uPass);</span>
+<span class="fc" id="L28">             us = (TbAdmin) query.uniqueResult();</span>
+<span class="fc" id="L29">             user = query.list();</span>
+<span class="fc" id="L30">             trans.commit();</span>
+         }
+<span class="nc" id="L32">         catch (Exception e){</span>
+<span class="nc" id="L33">              System.out.println(e);</span>
+<span class="fc" id="L34">         } </span>
+<span class="fc" id="L35">         return user;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

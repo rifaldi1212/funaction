@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    
+    <h:head>
+  <title>Login Admin</title>
+        <link rel="stylesheet" href="css/Login.css"></link>
+    </h:head>
+    <h:body style="
+            padding: 0;
+            margin: 0;
+            background-image: url(../image/background.jpg);
+            font-family: 'Montserrat', sans-serif;
+            background-color: #222831;
+            background-size: cover;
+        "> 
+        <div class="overlay">
+            <a href="index.xhtml"><img src="image/multiply.png" alt="cencle" class="cancle"/></a>
+        <h:form class="box">
+            <div class="header"
+                 style="
+                            background-image: url(image/5.jpg);
+                            background-size: cover;
+                            padding: 90px 30px;
+                            color: rgb(0, 0, 0); 
+                            border-radius: 15px 15px 0 0; 
+                     "
+                 >
+                <h4></h4>
+            </div>
+            <div class="login-area">
+                    <h4 style="font-size: 20px; font-weight: bold;">Login To Admin Page</h4>
+                    <h:inputText class="username" a:placeholder="Username" value="#{tbAdmin.username}"/>
+                    <h:inputSecret class="password" a:placeholder="Password" value="#{tbAdmin.password}"/>
+                    <h:commandButton action="#{tbAdmin.login_user()}" class="submit" value="Login"/>
+            </div>
+        </h:form>
+            </div>
+    </h:body>
+</html>

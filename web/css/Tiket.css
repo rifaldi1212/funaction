@@ -1,0 +1,246 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #1B2430;
+}
+
+.container-nav{
+    width: 1200px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+nav{
+    z-index: 100;
+    background-color:  rgb(19, 21, 22);
+    text-align: center;
+    position: fixed;
+    border-bottom: 1px solid #000000;
+    line-height: 60px;
+    width: 100%;
+}
+
+nav.logo{
+    line-height: 55px;
+    text-align: center;
+}
+
+nav .logo img {
+    padding: 1px;
+    float: left;
+    width: 123px;
+    vertical-align: middle;
+    margin-top: 0px;
+}
+
+nav .menu{
+    float: right;
+    height: 60px;
+    max-width: 720px;
+}
+
+nav .menu ul{
+    list-style-type: none;
+    padding: 3px;
+    display: flex;
+    float: left;
+    justify-content: space-between;
+}
+
+nav .menu ul li{
+    list-style-type: none;
+    line-height: 100px;
+    justify-content: space-between;
+    float: left;
+}
+
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px 20px 0px 20px;
+}
+
+nav ul li a:hover{
+    color: #FF7F3F;
+    text-decoration: underline;
+    transition: all .3s ease-in-out;
+}
+
+.active{
+    color: #FF7F3F;
+    text-decoration: underline;
+}
+
+.active:hover{
+    color: #FF7F3F !important;
+}
+
+.home-ticket{
+    padding-top: 130px;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%);
+    text-align: center;
+}
+
+.home-ticket .content {
+    text-align: center;
+    color:gold;
+    margin-top: 5%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title-tiket h3{
+    text-align: center;
+    font-weight: bold;
+    color: aliceblue;
+    font-size: 35px;
+    
+}
+
+form.grid{
+    display: flex;
+    justify-content: space-around;
+    padding: 1px;
+}
+.grid form{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 1px;
+}
+
+.home-ticket .box {
+    padding :25px;
+}
+
+.home-ticket input {
+    margin-top: 10px;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: aliceblue;
+}
+
+.booking_btn {
+    background: #CC8C18;
+    color: white;
+    padding: 20px 60px;
+    outline: none;
+    border: none;
+    border-radius: 60px;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    margin-left: 60px;
+    margin-right: 60px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btn {
+    margin-top: 35px;
+    text-align: center;
+    justify-content: center;
+}
+
+input{
+    writing-mode: horizontal-tb !important;
+    border-width: 2px;
+    border-style: inset;
+    background-color: #2C3639;
+}
+
+.detail-info{
+    text-align: left;
+    padding: 10px;
+    margin-left: 10em;
+    min-height: 350px;
+}
+
+.detail-info ol{
+    padding-bottom: 18px;
+}
+
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    padding-bottom: 15px;
+    color: aliceblue;
+}
+
+ol li{
+    padding-top: 5px;
+    font-size: 20px;
+    color: aliceblue;
+}
+
+footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color:  rgb(19, 21, 22);
+    padding: 30px;
+}
+
+footer .col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+footer h4 {
+    color: antiquewhite;
+    font-size: 23px;
+    padding-bottom: 15px; /*ngubah font sama padding*/
+}
+
+footer p {
+    color: antiquewhite;
+    font-size: 18px;
+    margin: 0 0 2px 0;
+}
+
+footer p span strong {
+    font-size: 18px;
+    padding-bottom: 30px;
+}
+
+footer a {
+    font-size: 17px;
+    text-decoration: none;
+    color: #222;
+    margin-bottom: 10px;
+}
+
+footer .follow h4 {
+    padding-bottom: 5px;
+}
+
+footer .follow {
+    margin-top: 20px;
+}
+
+footer .follow i {
+    color:  #465b52;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+footer .follow i:hover,
+footer a:hover {
+    color: #0a7069;
+}
+
+footer .copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: -38px;
+}
+

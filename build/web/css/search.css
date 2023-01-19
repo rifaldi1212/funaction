@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container-nav{
+    width: 1200px;
+    margin: auto;
+    padding-bottom: 10px;
+}
+
+nav{
+    z-index: 100;
+    background-color:  rgb(19, 21, 22);
+    text-align: center;
+    position: fixed;
+    border-bottom: 1px solid #000000;
+    line-height: 60px;
+    width: 100%;
+}
+
+nav.logo{
+    line-height: 55px;
+    text-align: center;
+}
+
+nav .logo img {
+    padding: 1px;
+    float: left;
+    width: 123px;
+    vertical-align: middle;
+    margin-top: 0px;
+}
+
+.search{
+    position: relative;
+    width: 26em;
+    float: left;
+    margin-top: 23px;
+    margin-left: 30px;
+}
+
+.srch{
+    font-family: 'Times New Roman';
+    width: 350px;
+    height: 40px;
+    background-color: transparent;
+    border: 1px solid #FF7F3F;
+    margin-top: 18px;
+    color: white;
+    border-right: none;
+    font-size: 18px;
+    float: left;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.btn{
+    margin-left: -80px;
+    margin-top: 18px;
+    cursor: pointer;
+    width: 60px;
+    height: 40px;
+    background-color: #FF7F3F;
+    border: 2px solid #FF7F3F;
+    color: #fff;
+    font-size: 18px;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.btn:focus{
+    outline: none;
+}
+
+.srch:focus{
+    outline: none;
+}
+
+nav .menu{
+    float: right;
+    height: 60px;
+    max-width: 720px;
+}
+
+nav .menu ul{
+    list-style-type: none;
+    padding: 3px;
+    display: flex;
+    float: left;
+    justify-content: space-between;
+}
+
+nav .menu ul li{
+    list-style-type: none;
+    line-height: 100px;
+    justify-content: space-between;
+    float: left;
+}
+
+nav ul li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 0px 20px 0px 20px;
+}
+
+nav ul li a:hover{
+    color: #FF7F3F;
+    text-decoration: underline;
+    transition: all .3s ease-in-out;
+}
+
+.active{
+    color: #FF7F3F;
+    text-decoration: underline;
+}
+
+.active:hover{
+    color: #FF7F3F !important;
+}
+
+header{
+    padding-top: 130px;
+    padding-bottom: 22px;
+    box-sizing: border-box;
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%);
+}

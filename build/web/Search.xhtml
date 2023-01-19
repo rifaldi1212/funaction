@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" 
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      >  
+    
+<h:head class="head">
+    <title>Edit Pengunjng</title>
+  <link rel="stylesheet" href="css/search.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display;=swap" rel="stylesheet"/>
+  
+</h:head>
+    <h:body style="background-image: url(image/background.jpg); background-size: cover; font-family: 'Montserrat', sans-serif;">   
+    <nav>    
+        <div class="container-nav">
+            <div class="logo">
+                <a href=""><img src="image/LogoNew.png" class="icon"/></a> 
+            </div>
+            <div class="menu" style="padding-top: 45px; max-width: 100em; ">
+                <ul>
+                    <h2 style="margin-right: 300px; color: whitesmoke; font-weight: bold;">Edit Data Pengunjung</h2>
+                    <p:commandButton action="success" value="Back" icon="ui-icon-arrowthick-1-w" /> 
+                </ul>
+            </div>
+        </div>
+  </nav>
+        <p:spacer> </p:spacer>   
+        
+        <h:form id="form" style="margin-top: 100px;">  
+        <p:growl id="messages" showDetail="true" />  
+        <h:panelGrid columns="4" style="padding:10px" cellpadding="3">
+            <div>
+                <p:outputLabel style="color: whitesmoke; font-weight: bold;" value="Please Select Record Number :" />  
+                <p:selectOneMenu value="#{userBean.user.recordNo}" editable="true" label="Please Select Record Number:" filter="true" id="ulist2" style="width: 200px;" a:placeholder="--SELECT--" >  
+                    <f:selectItem itemLabel="Select One" itemValue=""/>  
+                    <f:selectItems value="#{userBean.users}" var="user" itemLabel="#{user.recordNo}" itemValue="#{user}"/>                  
+                </p:selectOneMenu>
+                <p:commandButton value="Search" update=":form:userTable" type="Submit" icon="ui-icon-search" action="#{userBean.searchbyRecordno()}" /> 
+            </div>
+        </h:panelGrid>   
+        <p:spacer> </p:spacer>  
+  
+        <p:dataTable var="user" id="userTable" editable="true" value="#{userBean.searchByRecordNoList}">  
+            <f:facet name="header">  
+                Row Editing  
+            </f:facet>  
+            <p:ajax event="rowEdit" listener="#{userBean.onRowEdit}" update=":form:messages" />  
+            <p:ajax event="rowEditCancel" listener="#{userBean.onCancel}" update=":form:messages" />  
+  
+            <p:column headerText="Number">  
+                <p:cellEditor>  
+                    <f:facet name="output">  
+                        <h:outputText value="#{user.recordNo}"/>  
+                    </f:facet>  
+                    <f:facet name="input">  
+                        <p:inputText id="modelInput" value="#{user.recordNo}" style="width:100%" />  
+                    </f:facet>  
+                </p:cellEditor>  
+            </p:column>  
+  
+            <p:column headerText=" Nama">  
+                <p:cellEditor>  
+                    <f:facet name="output">  
+                        <h:outputText value="#{user.nama}" />  
+                    </f:facet>  
+                    <f:facet name="input">  
+                        <p:inputText value="#{user.nama}" style="width:100%" />  
+                    </f:facet>  
+                </p:cellEditor>  
+  
+            </p:column>  
+  
+            
+            <p:column headerText="Tanggal Kunjungan">  
+                <p:cellEditor>  
+                    <f:facet name="output">  
+                        <h:outputText value="#{user.tanggal}">  
+                            <f:convertDateTime type="date" pattern="dd-MMM-yyyy" />  
+                        </h:outputText>  
+                    </f:facet>  
+  
+                    <f:facet name="input">  
+                        <p:calendar id="dob" value="#{user.tanggal}" style="width:100%" label="DatePosted:" required="true" pattern="dd/MM/yyyy" effect="slideDown" requiredMessage="Please Enter Date of Birth!" navigator="true" showButtonPanel="true" yearRange="c-60:c+60" />  
+                    </f:facet>  
+                </p:cellEditor>  
+            </p:column>  
+             
+             <p:column headerText="Jumlah Ticket">  
+                <p:cellEditor>  
+                    <f:facet name="output">  
+                        <h:outputText value="#{user.jumlahtiket}" />  
+                    </f:facet>  
+                    <f:facet name="input">  
+                        <p:inputText value="#{user.jumlahtiket}" style="width:100%" />  
+                    </f:facet>  
+                </p:cellEditor>  
+            </p:column> 
+            
+            <p:column headerText="Email Pengguna">  
+                <p:cellEditor>  
+                    <f:facet name="output">  
+                        <h:outputText value="#{user.email}" />  
+                    </f:facet>  
+                    <f:facet name="input">  
+                        <p:inputText value="#{user.email}" style="width:100%" />  
+                    </f:facet>  
+                </p:cellEditor>  
+            </p:column>  
+            <p:column headerText="Edit" style="width:100px">  
+                <p:rowEditor />  
+            </p:column>  
+            
+            <p:column headerText="Delete">  
+  
+                <p:commandButton value="Delete" icon="ui-icon-trash" update="form:userTable" type="button" onclick="PF('confirmDialog').show()" />  
+                <p:confirmDialog message="Are you sure you want to delete this record?Record once deleted can not be retrieved." header="Deleting" severity="alert" widgetVar="confirmDialog">  
+                    <p:commandButton value="Yes Sure" action="#{userBean.deleteUser(user)}" oncomplete="PF('confirmDialog').hide()" />  
+  
+                    <p:commandButton value="Not Yet" onclick="PF('confirmDialog').hide();" type="button" />  
+                </p:confirmDialog>  
+            </p:column>
+            
+        </p:dataTable>  
+    </h:form>  
+</h:body>  
+  
+</html>

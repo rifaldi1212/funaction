@@ -1,0 +1,122 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+        
+    <h:head>
+        <title>Ticket Fun Action World</title>
+        <link rel="stylesheet" href="css/Tiket.css"></link>
+    </h:head>
+    <h:body>
+        <nav>
+        <div class="container-nav">
+            <div class="logo">
+                <a href=""><img src="image/LogoNew.png" class="icon"/></a>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="index.xhtml">Home</a></li>
+                    <li><a href="ticket.xhtml" class="active">Ticket</a></li>
+                    <li><a href="fasilitas.xhtml">Fasilitas</a></li>
+                    <li><a href="#ContactUs">About Us</a></li>
+                    <li><a href="LoginAdmin.xhtml" class="admin"><img src="image/icons8-admin-settings-male-48.png" style=" padding-top: 26px; padding-left: 100px;"/></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        
+        <section class="home-ticket">
+            <div class="title-tiket">
+                <h3>Booking Your Ticket</h3>
+            </div>
+            <div class="container-ticket">
+                <div class="content grid">
+                    <h:form>
+                        <div style="display: flex; margin-left: 30px">
+                        <div class="box">
+                            <span>Nama Pengunjung</span>
+                            <f:ajax event="chane" render="nameError">
+                                <p:inputText id="fName" a:placeholder="Masukan Nama Anda" value="#{userBean.newuser.nama}" required="true" requiredMessage="You must enter your name" ></p:inputText> <br/>
+                            <h:message for="fName" id="nameError" style="color: red; font-size: 12px;"/></f:ajax>
+                        </div>
+                        <div class="box">
+                            <span>Email</span>
+                            <p:inputText id="fEmail" a:placeholder="Masukan Email Anda" value="#{userBean.newuser.email}" required="true" requiredMessage="You must enter your email"></p:inputText> <br/>                      
+                            <h:message for="fEmail" style="color: red; font-size: 12px;"/>
+                        </div>
+                        <div class="box">
+                            <span>Tanggal Bermain</span>
+                            <p:calendar class="dop" id="fCal" a:placeholder="Pilih Tanggal Bermain" value="#{userBean.newuser.tanggal}" label="DatePosted:" required="true" pattern="dd/MMM/yyyy" effect="slideDown" requiredMessage="Please Enter Date of Posting!" navigator="true" showButtonPanel="true" yearRange="c-60:c+60" 
+                                        style="writing-mode: horizontal-tb !important; border-width: 2px; border-style: inset; background-color: #2C3639; border: none; outline: none; font-size: 18px; color: aliceblue;"/>                            
+                            <h:message for="fCal" style="color: red; font-size: 12px;"/>
+                        </div>
+                        <div class="box">
+                            <span>Jumlah Ticket</span>
+                            <p:inputText id="fTiket" a:placeholder="Tiket Yang Dipesan" value="#{userBean.newuser.jumlahtiket}" required="true" requiredMessage="select number of tickets" type="number"></p:inputText>
+                            <h:message for="fTiket" style="color: red; font-size: 12px;"/>
+                        </div>
+                            </div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div class="btn" style="margin-left: 45px">
+                            <h:commandButton class="booking_btn" value="Booking Now" action="#{userBean.addUser()}"/>
+                        </div>
+                    </h:form>                    
+                
+                </div>
+                <div class="detail-info">
+                <div class="title">
+                    <h4>Terms And Condition</h4>
+                </div>
+                    <ol>
+                        <li>Pengunjung wajib memindai QR Code dengan aplikasi Peduli Lindungi. Pemindaian dilakukan di pintu masuk Eation World</li>
+                        <li>Pengunjung wajib untuk memasukan informasi yang sebenar-benarnya</li>
+                        <li>Pengunjung wajib untuk memilih hari kedatangan sebelum membeli tiket secara online</li>
+                        <li>Tiket sudah termasuk Akses ke seluruh Wahana Eation World</li>
+                        <li>Tiket hanya berlaku sesuai dengan tanggal kedatangan sesuai dengan yang tertera pada tiket</li>
+                        <li>Eation World berhak untuk membatalkan tiket jika terbukti terjadi pemalsuan atau indikasi kesalahan lain yang terdapat pada tiket</li>
+                        <li>Tiket tidak dapat di Refund atau diperjual belikan ke orang lain</li>
+                        <li>Tidak diperbolehkan untuk membawa makanan atau minuman dari luar Eation World</li>
+                        <li>Tidak diperbolehkan untuk membawa benda berbahaya dan dilarang</li>
+                        <li>Pengunjung patuh pada peraturan yang ditetapkan oleh Eation World</li>
+                        <li>Pengunjung yang sudah keluar harus membayar penuh kembali jika masuk kembali ke area Eation World</li>
+                        <li>Tiket yang sudah digunakan tidak dapat digunakan kembali di waktu apapun</li>
+                        <li>Manajemen tidak bertanggung jawab atas segala bentuk kehilangan / kerusakan barang atau harta benda milik pengunjung</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+        <footer class="section-p1" id="ContactUs">
+
+        <div class="logo">
+            <img src="image/LogoNew.png" height="auto" width="300" alt=""/>
+        </div>
+
+        <div class="col">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Gedung Enginering Center Lt. 1, FTUI Kampus Baru UI Depok</p>
+            <p><strong>Phone:</strong> (021)-7884-9047/786-3508</p>
+            <p><span><strong>Hours:</strong> 08.00 - 16.00, Mon - Fri</span></p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <div class="icon">
+                    <i class="fab fa-facebook-f"></i>
+                    <a href="https://twitter.com/ccit_ftui"><img src="image/twitter.png" alt=""/></a>
+                    <a href="https://www.instagram.com/ccit_ftui/"><img src="image/instagram.png" alt=""/></a>
+                    <a href="https://www.youtube.com/channel/UCFnk__nKJXiIBKb8w_vUZ8A"><img src="image/youtube.png" alt=""/></a>
+                    <a href="https://id.pinterest.com/ccitftui2012/_saved/"><img src="image/pinterest.png" alt=""/></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>Â©ï¸ 2022, Group 2 Project Web Eation World</p>
+        </div>
+    </footer>
+    </h:body>
+</html>
+
