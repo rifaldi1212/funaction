@@ -121,9 +121,4 @@ nav ul li a:hover{
     color: #FF7F3F !important;
 }
 
-header{
-    padding-top: 130px;
-    padding-bottom: 22px;
-    box-sizing: border-box;
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%);
-}
+
